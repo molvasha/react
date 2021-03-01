@@ -1,0 +1,48 @@
+{
+  "name": "react_hw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "node ./node_modules/webpack/bin/webpack.js",
+    "start": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/molvasha/react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/molvasha/react/issues"
+  },
+  "homepage": "https://github.com/molvasha/react#readme",
+  "dependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.8",
+    "@babel/preset-react": "^7.12.13",
+    "material-ui": "^0.20.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "^4.0.3",
+    "style-loader": "^1.3.0",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^4.3.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-webpack-plugin": "^4.5.0",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.1",
+    "ts-loader": "^8.0.17",
+    "webpack-cli": "^4.5.0"
+  }
+}
