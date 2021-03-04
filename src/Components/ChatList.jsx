@@ -17,19 +17,29 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CheckboxListSecondary() {
+export default function ChatList(props) {
   const classes = useStyles();
 
   return (
     <List dense className={classes.root}>
-      {['Ivan Makeev', 'Антон Чепур', 'Кирилл Ткаченко', 'GeekBrains. ReactJS. Иван Макеев'].map(value => {
-        const labelId = `list-secondary-label-${value}`;
-        return (
-          <ListItem key={value} button className={classes.listItemChat}>
-            <ListItemText id={labelId} primary={value}/>
+      {chats.map((chat, index) => {
+        const labelId = `list-secondary-label-${chat.title + index}`;
+        return(
+        <Link key={chat.title} to={`/chat/${index}/`} className={classes.listItemChatLink}>
+          <ListItem button className={classes.listItemChat}>
+            <ListItemText id={labelId} primary={chat.title}/>
           </ListItem>
-        );
+        </Link>
+      );
       })}
     </List>
   );
 }
+
+ChatList.propTypes = {
+  chats: PropTypes.array,
+};
+
+ChatList.defaultTypes = {
+  chats: [],
+};

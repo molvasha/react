@@ -6,32 +6,39 @@ module.exports = {
   entry: {
     app: './main.js',
   },
+
   context: path.resolve(__dirname, "static_src"),
   output: {
     path: path.resolve(__dirname, "static", "build"),
     filename: 'app.js',
     publicPath: '/static/build/',
   },
+  devtool: 'cheap-inline-module-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'static/build'),
-    compress: true,
     port: 9000,
+    historyApiFallback: {
+      index: 'index.html',
+    },
   },
+
 
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(jsx|js)$/,
         include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-            },
-          },
-        ],
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                "targets": "defaults"
+              }],
+              '@babel/preset-react'
+            ]
+          }
+        }]
       },
       {
         test: /\.css$/,
@@ -52,7 +59,7 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader',
+          {loader: 'file-loader'},
         ],
       },
     ],

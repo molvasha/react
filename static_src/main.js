@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from '../static/build/App';
+import './css/styles.css';
+import App from './App'
 import reportWebVitals from './reportWebVitals';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './Components/Router';
 
-
-const messages = ['Привет', 'Как дела?'];
-const MessageComponent = (props) => <div>{props.text}</div>;
-const MessageField = (props) => {
-  return props.messages.map(message => <MessageComponent text={message}/>);
-};
 ReactDOM.render(
-  <MessageField messages={messages}/>,
+  <App />,
   document.getElementById('root'),
 );
+
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    );
+  }
+}
