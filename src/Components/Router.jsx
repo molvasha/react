@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
-import ChatLayout from './ChatLayout';
-import Profile from './Profile';
+import ChatLayout from './ChatLayout.jsx';
+import Profile from './Profile.jsx';
 
 
 export default class Router extends React.Component {
@@ -10,15 +10,12 @@ export default class Router extends React.Component {
     this.state = {};
   }
 
-    render()
-    {
-      return (
-        <Switch>
-          <Route exact path="/" render={() => (<Redirect to="/chat/0/" />)} />
-          <Route exact path="/profile" component={Profile}/>
-          <Route exact path="/chat/:chatId" render={obj => <ChatLayout chatId={Number(obj.match.params.chatId)}/>}/>
-        </Switch>
-      );
-    }
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/profile" component={Profile}/>
+      </Switch>
+    );
   }
+}
 

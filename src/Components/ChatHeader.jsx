@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,12 +11,12 @@ export default class ChatHeader extends Component {
   }
 
   render() {
-    const {title} = this.props;
+    const {chatId} = this.props;
     return (
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6">
-            {title}
+            {chatId}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -25,5 +25,5 @@ export default class ChatHeader extends Component {
 }
 
 ChatHeader.propTypes = {
-  title: PropTypes.string,
+  chatId: PropTypes.numbers,
 };

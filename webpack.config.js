@@ -1,32 +1,20 @@
 const path = require('path');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
-  entry: {
-    app: './main.js',
-  },
-
-  context: path.resolve(__dirname, "static_src"),
+  entry: path.join(__dirname, "static_src", "main.js"),
   output: {
-    path: path.resolve(__dirname, "static", "build"),
-    filename: 'app.js',
-    publicPath: '/static/build/',
+    path: path.join(__dirname, "build"),
+    filename: "app.js",
   },
-  devtool: 'cheap-inline-module-source-map',
-  devServer: {
-    port: 9000,
-    historyApiFallback: {
-      index: 'index.html',
-    },
-  },
+  devtool: 'source-map',
 
-
-  module: {
+    module: {
     rules: [
       {
-        test: /\.(jsx|js)$/,
-        include: path.resolve(__dirname, 'src'),
+        test: /.(js|jsx)$/,
         exclude: /node_modules/,
         use: [{
           loader: 'babel-loader',
@@ -41,20 +29,8 @@ module.exports = {
         }]
       },
       {
-        test: /\.css$/,
-        use: [
-          // [style-loader](/loaders/style-loader)
-          { loader: 'style-loader' },
-          // [css-loader](/loaders/css-loader)
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          },
-          // [sass-loader](/loaders/sass-loader)
-          { loader: 'sass-loader' }
-        ]
+        test: /.(css|scss)$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -64,4 +40,16 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "main.html",
+      template: path.join(__dirname,"static_src", "main.html"),
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+    }),
+  ],
 };
+
