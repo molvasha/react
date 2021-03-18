@@ -34,7 +34,6 @@ button:hover {
     background-color: rgba(81, 136, 199, 0.8);
 }
 
-/* Жестко захардкодил */
 input[type='text'] {
     flex: 1;
     border: 0;
@@ -109,6 +108,41 @@ input[type='text'] {
     border-right: 1px solid #0e1622;
 }
 
+.messageField {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr 36px;
+}
+
+.chatList {
+    width: 100%;
+    color: #e4eaf1;
+}
+.listItemChat:hover {
+    background-color: #3d4044;
+}
+.listItemChat {
+    white-space: nowrap;
+}
+
+.listItemChat.blink-chat {
+    background-color: #3d4044 !important;
+}
+
+.listItemChatLink {
+    text-decoration: none;
+    color: white;
+}
+.add-new-chat {
+    padding: 0 !important;
+}
+.grid-container {
+    height: 100vh;
+}
+.chatList {
+    background-color: #182633;
+    border-right: 1px solid #0e1622;
+}
 .messageField {
     height: 100vh;
     display: grid;

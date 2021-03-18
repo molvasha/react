@@ -1,4 +1,9 @@
-/******/ (function(modules) { // webpackBootstrap
+/******/ import React, { useEffect, useState, useCallback } from "react";
+
+import Child from './child';
+import "./app.scss";
+
+(function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -81,14 +86,14 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./main.jsx");
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ "./main.js":
 /*!*****************!*\
-  !*** ./main.js ***!
+  !*** ./main.jsx ***!
   \*****************/
 /*! no static exports found */
 /***/ (function(module, exports) {
