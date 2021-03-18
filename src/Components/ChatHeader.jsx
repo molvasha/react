@@ -10,7 +10,6 @@ export default class ChatHeader extends Component {
     super(props);
     this.state = {};
   }
-
   render() {
     const {chatId} = this.props;
     return (
