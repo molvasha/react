@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 import bindActionCreators from 'redux';
 import Redirect from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
-import sendMessage from '../Actions/messageActions.js';
+import CircularProgress from 'material-ui/CircularProgress';
+import {sendMessage, loadMessages} from '../Actions/messageActions.js';
+import { loadChats } from '../Actions/chatActions';
 
 class MessageField extends Component {
   constructor(props) {
@@ -18,6 +20,13 @@ class MessageField extends Component {
     this.chatWindow = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.loadChats();
+    fetch('/api/messages.json'
+    ).then(body => body.json()).
+    then(json => console.log(json))
   }
 
   handlesendMessage(text, sender) {
@@ -46,6 +55,10 @@ class MessageField extends Component {
   }
 
   render() {
+    if (this.props.isLoading) {
+      return <CircularProgress />
+    }
+
     const {
       chatId, chats, messages,
     } = this.props;
@@ -94,6 +107,7 @@ MessageField.propTypes = {
 const mapStateToProps = ({chatReducer, messageReducer}) => ({
   chats: chatReducer.chats,
   messages: messageReducer.messages,
+  isLoading: messageReducer.isLoading,
 });
-const mapDispatchToProps = dispatch => bindActionCreators({sendMessage}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({sendMessage, loadChats}, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(MessageField);

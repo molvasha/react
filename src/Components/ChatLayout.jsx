@@ -12,55 +12,9 @@ export default class ChatLayout extends Component {
     super(props);
   }
 
-  //   this.state = {
-  //     chats: [
-  //       {title: 'Ivan Makeev', messageList: [0, 1]},
-  //       {title: 'Антон Чепур', messageList: []},
-  //       {title: 'Кирилл Ткаченко', messageList: []},
-  //     ],
-  //     messages: [
-  //       {
-  //         id: uuid(),
-  //         text: 'Привет',
-  //         sender: 'not-me',
-  //       },
-  //       {
-  //         id: uuid(),
-  //         text: 'Как дела?',
-  //         sender: 'me',
-  //       },
-  //     ],
-  //   };
-  //
-  //   this.chatWindow = React.createRef();
-  // }
-  //
-  // sendMessage(text, sender) {
-  //   if (text.length > 0) {
-  //     const {messages} = this.state;
-  //     const {chatId} = this.props;
-  //
-  //     const messageId = Object.keys(messages).length + 1;
-  //
-  //     this.setState(state => {
-  //       const chatsTemp = state.chats.map((chat, index) => {
-  //         if (index === chatId) {
-  //           chat.messageList.push(messageId);
-  //         }
-  //         return chat;
-  //       });
-  //       return {
-  //         messages: {...messages, [messageId]: {id: uuid(), text, sender}},
-  //         chats: chatsTemp,
-  //       };
-  //     });
-  //
-  //   }
-  // }
 
   render() {
     const {chatId} = this.props;
-    // const {chats, messages} = this.state;
 
     return (
       <Grid className="grid-container" container alignItems="stretch">
